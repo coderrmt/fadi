@@ -189,4 +189,39 @@ Go to `Generic: User Account` and a list of fields will show up. Enter the infor
  
 
 
+Gluu Setup
+---------------
+
+
+
+### Minikube 
+
+Helm installer provides wizard steps with for example target deployment selection:
+
+```bash
+minikube start
+./pygluu-kubernetes-linux-amd64.pyz helm-install
+
+### Docker Compose
+
+Run Grafana and Gluu in Docker using Docker Compose (temporarily because some issues with minikube
+
+```
+./pygluu-compose-linux-amd64.pyz up
+docker run -d --mount type=bind,source=$PWD/custom.ini,target=/etc/grafana/grafana.ini -p 3000:3000 grafana/grafana
+```
+
+See [custom.ini](custom.ini)
+
+### Notes:
+
+
+* Alpha: Istio & Istio Ingress integration ([Istio by moabu · Pull Request #156 · GluuFederation/cloud-native-edition · GitHub](https://github.com/GluuFederation/cloud-native-edition/pull/156))
+* Unknown: Kong integration: [Search · kong · GitHub](https://github.com/GluuFederation/cloud-native-edition/search?q=kong&type=code)
+* [Gluu Casa](https://gluu.org/docs/casa) - self-service web portal for end-users to manage security preferences for their account in a Gluu Server
+
+> As a profile of OAuth 2.0 that is complementary to OpenID Connect, UMA 2 defines RESTful, JSON-based, standardized flows and constructs for coordinating the protection of APIs and web resources.
+
+Ref: [UMA Authorization Server (AS) - Gluu Server 4.0 Docs](https://gluu.org/docs/gluu-server/4.0/admin-guide/uma/)
+
 
